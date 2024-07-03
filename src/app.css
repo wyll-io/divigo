@@ -7,16 +7,16 @@
     @apply flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6;
   }
   .nav-btn-default {
-    @apply text-indigo-200 hover:text-white hover:bg-indigo-700;
+    @apply text-blue-200 hover:bg-blue-700 hover:text-white;
   }
   .nav-btn-active {
-    @apply bg-indigo-700 text-white;
+    @apply bg-blue-700 text-white;
   }
   .nav-btn-icon {
     @apply h-6 w-6 shrink-0;
   }
   .nav-btn-icon-default {
-    @apply text-indigo-200 group-hover:text-white;
+    @apply text-blue-200 group-hover:text-white;
   }
   .nav-btn-icon-active {
     @apply text-white;
