@@ -2,9 +2,10 @@
   import { cn } from '$lib/utils';
   import type { ComponentType } from 'svelte';
   import { page } from '$app/stores';
-  import { CircleUser, LogIn, LogOut } from 'lucide-svelte';
+  import { LogIn, LogOut } from 'lucide-svelte';
 
   export let links: Array<{ label: string; icon: ComponentType; link: string }>;
+  export let logout: () => Promise<void>;
 
   const currentPage = $page.url.pathname;
 </script>
@@ -53,51 +54,43 @@
             </div>
           </div>
 
-          <div>
-            <a
-              href="/profile"
-              class={cn(
-                'nav-btn group items-center',
-                currentPage === '/profile' ? 'nav-btn-active' : 'nav-btn-default'
-              )}
-            >
-              {#if false}
+          {#if false}
+            <div>
+              <a
+                href="/profile"
+                class={cn(
+                  'nav-btn group items-center',
+                  currentPage === '/profile' ? 'nav-btn-active' : 'nav-btn-default'
+                )}
+              >
                 <img
                   class="h-8 w-8 rounded-full bg-blue-700"
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="Profile"
                 />
-              {:else}
-                <CircleUser
-                  class={cn(
-                    'nav-btn-icon',
-                    currentPage === '/profile' ? 'nav-btn-icon-active' : 'nav-btn-icon-default'
-                  )}
-                  aria-hidden="true"
-                />
-              {/if}
-              <span class="sr-only">Your profile</span>
-              <span aria-hidden="true">{false ? 'Tim Cook' : 'Profile'}</span>
-            </a>
-          </div>
+                <span class="sr-only">Your profile</span>
+                <span aria-hidden="true">Tim Cook</span>
+              </a>
+            </div>
+          {/if}
           <div>
             {#if false}
-              <a
-                href="/logout"
+              <button
                 class={cn(
                   'nav-btn group',
                   currentPage === '/settings' ? 'nav-btn-active' : 'nav-btn-default'
                 )}
+                on:click={logout}
               >
                 <LogOut class="nav-btn-icon nav-btn-icon-default" aria-hidden="true" />
                 Logout
-              </a>
+              </button>
             {:else}
               <a
                 href="/login"
                 class={cn(
                   'nav-btn group',
-                  currentPage === '/settings' ? 'nav-btn-active' : 'nav-btn-default'
+                  currentPage === '/login' ? 'nav-btn-active' : 'nav-btn-default'
                 )}
               >
                 <LogIn class="nav-btn-icon nav-btn-icon-default" aria-hidden="true" />
